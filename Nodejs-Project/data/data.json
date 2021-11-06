@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Mutton Tikka",
+    "address": "New Market, Bhopal",
+    "cuisine": "New Bhopal",
+    "website": "https://mutton.com",
+    "description": "This is delicious"
+  },
+  {
+    "name": "Chicken Chatpata",
+    "address": "MP Nagar, Bhopal",
+    "cuisine": "Bhopali",
+    "website": "https://chicken.com",
+    "description": "New chicken"
+  }
+]
