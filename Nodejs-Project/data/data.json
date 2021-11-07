@@ -1,5 +1,6 @@
 [
   {
+    "id": "r1",
     "name": "Mutton Tikka",
     "address": "New Market, Bhopal",
     "cuisine": "New Bhopal",
@@ -7,10 +8,35 @@
     "description": "This is delicious"
   },
   {
+    "id": "r2",
     "name": "Chicken Chatpata",
     "address": "MP Nagar, Bhopal",
     "cuisine": "Bhopali",
     "website": "https://chicken.com",
     "description": "New chicken"
+  },
+  {
+    "name": "Khana Khazana",
+    "address": "old City, bhopal",
+    "cuisine": "Bhopal",
+    "website": "https://khanakhazana.com",
+    "description": "Here so many new varieties of food",
+    "id": "c3e89ee4-2d43-41a5-9448-3f985898446c"
+  },
+  {
+    "name": "Sharma Bhojnalay",
+    "address": "Jawaharchouwk, Bhopal",
+    "cuisine": "Bhopal",
+    "website": "https://sharma.com",
+    "description": "Only Veg Food",
+    "id": "dc4b433e-261d-4124-afc4-e1252964e246"
+  },
+  {
+    "name": "Hill Point",
+    "address": "Shyama Hills",
+    "cuisine": "New Bhopal",
+    "website": "https://hillpoint.com",
+    "description": "Its not good enough",
+    "id": "e7f31608-310a-4dda-9753-9d1de5467936"
   }
 ]
