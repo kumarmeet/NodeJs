@@ -1,0 +1,14 @@
+<%- include("partials/header") %>
+<section class="content-area">
+  <h1>Home</h1>
+  <p><%= startingContent %></p>
+  <% for(const post of posts) { %>
+  <h1><%= post.title %></h1>
+  <p>
+    <%= post.post.substring(0, 204) + "...." %><a href="post/<%=post.title%>"
+      >Read More</a
+    >
+  </p>
+</section>
+<% } %> 
+<%- include("partials/footer") %>
