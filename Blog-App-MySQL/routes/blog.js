@@ -42,22 +42,71 @@ router.post("/posts", async (req, res) => {
   res.redirect("/posts");
 });
 
-router.get("/detail/:id", async (req, res) => {
+router.get("/posts/:id", async (req, res) => {
   const id = req.params.id;
 
   const [posts] = await db.query(
-    `SELECT posts.*, authors.name AS author_name FROM posts 
-    INNER JOIN authors ON posts.author_id = authors.id`
+    `SELECT posts.*, authors.name AS author_name, authors.email AS author_email FROM
+  posts INNER JOIN authors ON posts.author_id = authors.id
+  WHERE posts.id = ?`,
+    id
   );
 
-  for (const post of posts) {
-    if (parseInt(id) === post.id) {
-      res.render("post-detail", { post: post });
-      return;
-    }
+  if (!posts || posts.length === 0) {
+    return res.status(404).render("404");
   }
 
+  const postData = {
+    ...posts[0],
+    date: posts[0].date.toISOString(),
+    humanReadableDate: posts[0].date.toLocaleString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
+  };
+
+  res.render("post-detail", { post: postData });
+
   res.status(404).render("404");
+});
+
+router.get("/posts/:id/edit", async (req, res) => {
+  const query = `
+  SELECT * FROM posts WHERE id = ?
+  `;
+
+  const [posts] = await db.query(query, [req.params.id]);
+
+  if (!posts || posts.length === 0) {
+    return res.status(404).render("404");
+  }
+
+  res.render("update-post", { post: posts[0] });
+});
+
+router.post("/posts/:id/edit", async (req, res) => {
+  const query = `
+    UPDATE posts SET title = ?, summary = ?, body = ?
+    WHERE id = ?
+  `;
+
+  await db.query(query, [
+    req.body.title,
+    req.body.summary,
+    req.body.content,
+    req.params.id,
+  ]);
+
+  res.redirect("/posts");
+});
+
+router.post("/posts/:id/delete", async (req, res) => {
+  const query = `DELETE FROM posts WHERE id = ?`;
+
+  await db.query(query, [req.params.id]);
+  res.redirect("/posts");
 });
 
 module.exports = router;
