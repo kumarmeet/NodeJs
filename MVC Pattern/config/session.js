@@ -1,29 +1,30 @@
-const mongodbStore = require("connect-mongodb-session");
+const mongodbStore = require('connect-mongodb-session');
 
-function sessionStore(session) {
+function createSessionStore(session) {
   const MongoDBStore = mongodbStore(session);
 
   const sessionStore = new MongoDBStore({
-    uri: "mongodb://localhost:27017",
-    databaseName: "auth-demo",
-    collection: "sessions",
+    uri: 'mongodb://localhost:27017',
+    databaseName: 'auth-demo',
+    collection: 'sessions',
   });
+
   return sessionStore;
 }
 
 function createSessionConfig(sessionStore) {
   return {
-    secret: "super-secret",
+    secret: 'super-secret',
     resave: false,
     saveUninitialized: false,
     store: sessionStore,
     cookie: {
-      maxAge: 2 * 24 * 60 * 60 * 1000,
-    },
+      maxAge: 2 * 24 * 60 * 60 * 1000
+    }
   };
 }
 
 module.exports = {
-  sessionStore: sessionStore,
-  createSessionConfig: createSessionConfig,
+  createSessionStore: createSessionStore,
+  createSessionConfig: createSessionConfig
 };
