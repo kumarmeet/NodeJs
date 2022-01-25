@@ -1,0 +1,29 @@
+<%- include("includes/head") %> 
+
+<form action="/" method="GET">
+    <input type="hidden" name="order" value="<%= nextOrder %>">
+    <button type="submit">Order</button>
+</form>
+
+<form action="/" method="POST">
+    <p>
+        <label for="name">Name</label>
+        <input type="text" name="name" required>
+    </p>
+
+    <p>
+        <label for="city">City</label>
+        <input type="text" name="city" required>
+    </p>
+
+    <p>
+        <label for="contact">Contact</label>
+        <input type="text" name="contact" required>
+    </p>
+
+    <button type="submit">Submit</button>
+</form>
+
+<%- include("includes/users/user-detail", {users: users}) %> 
+
+<%- include("includes/footer") %> 
