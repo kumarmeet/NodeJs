@@ -1,0 +1,10 @@
+<% for(const user of users) {%>
+    
+     <section>
+        <h3> <%= user.name %> </h3>
+        <h2> <%= user.city %> </h2>
+        <h2> <%= user.contact %> </h2>
+        <button><a href="/<%= user.id %>/<%= user.name %> ">View User Details</a></button>
+    </section>   
+
+<% } %> 
